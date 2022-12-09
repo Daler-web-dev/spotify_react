@@ -15,3 +15,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.header {
+  @apply w-full bg-black md:bg-[#c4c4c4] py-7 px-10 
+}
