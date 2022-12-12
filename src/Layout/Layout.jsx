@@ -1,15 +1,18 @@
 import React from 'react';
 import {Outlet }from 'react-router-dom'
+import Aside from '../Components/Aside';
+import FriendList from '../Components/FriendList';
+import Header from '../Components/Header';
 
 const Layout = () => {
     return (
         <>
-            <header className="header" >header</header>            
+            <Header>header</Header>            
             <main>
-                <aside>menu</aside>
+                <Aside/>
+                <FriendList/>
                 <Outlet/>
             </main>
-            <footer>footer</footer>
         </>
     );
 };
