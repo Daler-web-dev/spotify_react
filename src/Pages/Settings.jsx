@@ -48,7 +48,7 @@ const IOSSwitch = styled((props) => (
         transform: 'translateX(16px)',
         color: '#fff',
         '& + .MuiSwitch-track': {
-          backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#65C466',
+          backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#1DB954',
           opacity: 1,
           border: 0,
         },
@@ -77,7 +77,7 @@ const IOSSwitch = styled((props) => (
     },
     '& .MuiSwitch-track': {
       borderRadius: 26 / 2,
-      backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+      backgroundColor: theme.palette.mode === 'light' ? '#535353' : '#39393D',
       opacity: 1,
       transition: theme.transitions.create(['background-color'], {
         duration: 500,
@@ -96,7 +96,7 @@ function getStyles(name, personName, theme) {
 
 const Settings = () => {
     const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
+    const [personName, setPersonName] = React.useState([])
   
     const handleChange = (event) => {
       const {
@@ -172,13 +172,14 @@ const Settings = () => {
             </div>
             <div className="w-[100%] flex justify-between items-end">
                 <div className="flex flex-col gap-[15px]">
-                    <p className='text-white text-[23px] font-bold'>Язык</p>
-                    <p className="text-[#ffffff90] text-[14.5px]">Выбери язык. Изменения вступят в силу после перезапуска приложения</p>
+                    <p className='text-white text-[23px] font-bold'>Качество звука</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Качетсво стриминга</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Скачать</p>
                 </div>
-                <div>
-      <FormControl sx={{ width: 300, height: '40px', backgroundColor: "#333333", borderRadius: "5px" }}>
+                <div className='flex flex-col gap-[5px]'>
+      <FormControl sx={{ width: 150, height: '35px', backgroundColor: "#333333", borderRadius: "5px" }}>
         <Select
-        sx={{color: '#ffffff90', width: 300, height: '40px', fontSize: "14px", fontStyle: "normal", backgroundColor: "#333333"}}
+        sx={{color: '#ffffff90', width: 150, height: '35px', fontSize: "14px", fontStyle: "normal", backgroundColor: "#333333"}}
           multiple
           displayEmpty
           value={personName}
@@ -186,7 +187,7 @@ const Settings = () => {
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Русский</em>;
+              return <em>Высоко</em>;
             }
 
             return selected.join(', ');
@@ -195,10 +196,10 @@ const Settings = () => {
           inputProps={{ 'aria-label': 'Without label' }}
         >
           <MenuItem disabled value="" >
-            <em>Русский</em>
+            <em>Высоко</em>
           </MenuItem>
           {names.map((name) => (
-            <MenuItem sx={{height: '40px', color: '#ffffff90', backgroundColor: "#333333",}}
+            <MenuItem sx={{height: '35px', color: '#ffffff90', backgroundColor: "#333333",}}
               key={name}
               value={name}
               style={getStyles(name, personName, theme)}
@@ -208,9 +209,9 @@ const Settings = () => {
           ))}
         </Select>
       </FormControl>
-      <FormControl sx={{ width: 300, height: '40px', backgroundColor: "#333333", borderRadius: "5px" }}>
+      <FormControl sx={{ width: 150, height: '35px', backgroundColor: "#333333", borderRadius: "5px" }}>
         <Select
-        sx={{color: '#ffffff90', width: 300, height: '40px', fontSize: "14px", fontStyle: "normal", backgroundColor: "#333333"}}
+        sx={{color: '#ffffff90', width: 150, height: '35px', fontSize: "14px", fontStyle: "normal", backgroundColor: "#333333"}}
           multiple
           displayEmpty
           value={personName}
@@ -218,7 +219,7 @@ const Settings = () => {
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Русский</em>;
+              return <em>Высоко</em>;
             }
 
             return selected.join(', ');
@@ -227,10 +228,10 @@ const Settings = () => {
           inputProps={{ 'aria-label': 'Without label' }}
         >
           <MenuItem disabled value="" >
-            <em>Русский</em>
+            <em>Высоко</em>
           </MenuItem>
           {names.map((name) => (
-            <MenuItem sx={{height: '40px', color: '#ffffff90', backgroundColor: "#333333",}}
+            <MenuItem sx={{height: '35px', color: '#ffffff90', backgroundColor: "#333333",}}
               key={name}
               value={name}
               style={getStyles(name, personName, theme)}
@@ -241,6 +242,16 @@ const Settings = () => {
         </Select>
       </FormControl>
     </div>
+            </div>
+            <div className="w-[100%] flex justify-between items-center">
+                <div className="flex flex-col gap-[15px]">
+                    <p className="text-[#ffffff90] text-[14.5px]">Автонастройка качества звука (советуем включить)</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Установить одну громкость для всех треков</p>
+                </div>
+                <div className="flex flex-col gap-[5px]">
+                <FormControlLabel control={<IOSSwitch defaultChecked />}/>
+                <FormControlLabel control={<IOSSwitch defaultChecked />}/>
+                </div>
             </div>
             </div>
         </div>
