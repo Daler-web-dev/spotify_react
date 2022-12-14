@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -95,6 +92,10 @@ function getStyles(name, personName, theme) {
   }
 
 const Settings = () => {
+    useEffect(() => {
+      let body = document.body
+      body.style.backgroundColor = "#121212"
+    })
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([])
   
@@ -108,7 +109,7 @@ const Settings = () => {
       );
     }
     return ( 
-        <div className="w-full bg-[#121212] p-[20px] w-[90%]">
+        <div className="w-full bg-[#121212] p-[20px] w-[90%] mb-[120px]">
             <div className="w-[100%] flex justify-between mb-[30px]">
                 <p className='text-white text-[26px] font-bold'>Настройки</p>
                 <div className="w-[40px] h-[40px] bg-[#121212] rounded-[100%] flex justify-center items-center ease-in hover:bg-[#ffffff20]">
@@ -248,9 +249,89 @@ const Settings = () => {
                     <p className="text-[#ffffff90] text-[14.5px]">Автонастройка качества звука (советуем включить)</p>
                     <p className="text-[#ffffff90] text-[14.5px]">Установить одну громкость для всех треков</p>
                 </div>
-                <div className="flex flex-col gap-[5px]">
+                <div className="flex flex-col gap-[10px]">
                 <FormControlLabel control={<IOSSwitch defaultChecked />}/>
                 <FormControlLabel control={<IOSSwitch defaultChecked />}/>
+                </div>
+            </div>
+            <div className="w-[100%] flex justify-between items-end">
+                    <p className="text-[#ffffff90] text-[14.5px] w-[500px]">Настрой уровень громкости в зависимости шума вокруг. Качество звука останется неизменным в режимах "Нормально" и "Тихо",но может ухудшиться в режиме "Громко".</p>
+
+      <FormControl sx={{ width: 150, height: '35px', backgroundColor: "#333333", borderRadius: "5px" }}>
+        <Select
+        sx={{color: '#ffffff90', width: 150, height: '35px', fontSize: "14px", fontStyle: "normal", backgroundColor: "#333333"}}
+          multiple
+          displayEmpty
+          value={personName}
+          onChange={handleChange}
+          input={<OutlinedInput />}
+          renderValue={(selected) => {
+            if (selected.length === 0) {
+              return <em>Нормально</em>;
+            }
+
+            return selected.join(', ');
+          }}
+          MenuProps={MenuProps}
+          inputProps={{ 'aria-label': 'Without label' }}
+        >
+          <MenuItem disabled value="" >
+            <em>Нормально</em>
+          </MenuItem>
+          {names.map((name) => (
+            <MenuItem sx={{height: '35px', color: '#ffffff90', backgroundColor: "#333333",}}
+              key={name}
+              value={name}
+              style={getStyles(name, personName, theme)}
+            >
+              {name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+            </div>
+            <div className="w-[100%] flex justify-between items-end">
+                <div className="flex flex-col gap-[15px]">
+                    <p className='text-white text-[23px] font-bold'>Файлы на устройстве</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Показывать файлы на устройстве</p>
+                </div>
+                <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} />}/>
+            </div>
+            <div className="w-[100%] flex justify-between items-end">
+                <div className="flex flex-col gap-[15px]">
+                    <p className='text-white text-[23px] font-bold'>Вид</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Узнай, что слушают твои друзья</p>
+                </div>
+                <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} />}/>
+            </div>
+            <p className='text-white text-[23px] font-bold'>Приватность</p>
+            <div className="w-[100%] flex justify-between items-center">
+                <div className="flex flex-col gap-[15px]">
+                    <p className="text-[#ffffff90] text-[14.5px]">Публиковать новые плейлисты в своем профиле</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Включить приватный режим, чтобы слушать контент анонимно</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Показывать что я слушаю в Spotify</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Показывать раздел "Недавно прослушано" в открытом профиле.</p>
+                </div>
+                <div className="flex flex-col gap-[10px]">
+                <FormControlLabel control={<IOSSwitch defaultChecked />}/>
+                <FormControlLabel control={<IOSSwitch/>}/>
+                <FormControlLabel control={<IOSSwitch/>}/>
+                <FormControlLabel control={<IOSSwitch/>}/>
+                </div>
+            </div>
+            <p className='text-white text-[23px] font-bold'>Воспроизведение</p>
+            <div className="w-[100%] flex justify-between items-center">
+                <div className="flex flex-col gap-[15px]">
+                    <p className="text-[#ffffff90] text-[14.5px]">Плавный переход между треками</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Автомикс: включи плавные переходы между треками в ряде плейлистов</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Монозвук - одинаковое воспроизведение звука в правом и левом динамике</p>
+                    <p className="text-[#ffffff90] text-[14.5px]">Эквалайзер</p>
+                </div>
+                <div className="flex flex-col gap-[10px]">
+                <FormControlLabel control={<IOSSwitch/>}/>
+                <FormControlLabel control={<IOSSwitch defaultChecked/>}/>
+                <FormControlLabel control={<IOSSwitch/>}/>
+                <FormControlLabel control={<IOSSwitch defaultChecked/>}/>
                 </div>
             </div>
             </div>
