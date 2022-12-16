@@ -1,7 +1,11 @@
 import React from 'react'
+import { useContext } from 'react'
+import { useEffect } from 'react'
+import { createContext } from 'react'
 import BrowseAll from '../Components/Search_childs/BrowseAll'
 import RecentSearches from '../Components/Search_childs/RecentSearches'
 import SearchResult from '../Components/Search_childs/SearchResult'
+import Searchcontext from '../Contexts/searchcontext'
 
 // sm	640px	@media (min-width: 640px) { ... }
 // md	768px	@media (min-width: 768px) { ... }
@@ -10,10 +14,12 @@ import SearchResult from '../Components/Search_childs/SearchResult'
 // 2xl	1536px	@media (min-width: 1536px) { ... }
 
 function Seach() {
+
+  const search = useContext(Searchcontext)
+  
   return (
     <div className='bg-[#121212]  w-full pt-24 px-[40px] mb-[100px]'>
-      {/* <RecentSearches/> */}
-      <SearchResult/>
+      {search.lengthText ? <SearchResult/> : <RecentSearches/>}
       <BrowseAll/>
     </div>
   )

@@ -1,12 +1,16 @@
 import React from "react";
+import { useContext } from "react";
+import Searchcontext from "../../Contexts/searchcontext";
 
 function RightBlock_cild() {
+  const search = useContext(Searchcontext)
+
     return(
         <div className="flex items-center justify-between w-full p-2 rounded-lg">
             <div className="flex items-center gap-[20px]">
                 <img src="/img/artist-img_1.svg " width="45px" alt="" />
                 <div className="flex flex-col">
-                    <p className="text-white text-xl font-bold">Lorem, ipsum dolor.</p>
+                    <p className="text-white text-xl font-bold">{search.searchText}</p>
                     <span className="text-[#a2a2a2] font-semibold">Далеко</span>
                 </div>
             </div>
