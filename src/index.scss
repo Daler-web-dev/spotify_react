@@ -18,12 +18,13 @@ code {
 
 
 .header {
-  @apply w-full bg-black md:bg-[#c4c4c4] py-7 px-10 
+  @apply w-full bg-black md:bg-[#c4c4c4] py-7 px-10;
 }
 
 .navBtn {
   @apply text-white bg-[black] hover:bg-[black]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 mr-2 mb-2 text-[24px] gap-5
 }
+
 
 input[type='range'] {
   -webkit-appearance: none !important;
@@ -75,3 +76,5 @@ input[type='range']::-webkit-slider-thumb {
   left: 0;
   transition: .3s linear;
 }
+
+
