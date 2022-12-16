@@ -1,12 +1,13 @@
-import React from 'react';
+import PlaylistOverview from "../Components/PlaylistOverview";
+import SongsList from "../Components/SongsList";
 
-const Playslist = () => {
+const LikedSongs = () => {
     return (
         <div>
-            <h1>Playslit</h1>            
+            <PlaylistOverview />
+            <SongsList />
         </div>
     );
-};
+}
 
-
-export default Playslist;
+export default LikedSongs;  
