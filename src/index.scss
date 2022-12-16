@@ -35,5 +35,59 @@ code {
 }
 
 .navBtn {
-  @apply text-white bg-[black] hover:bg-[black]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 mr-2 mb-2 text-[24px] gap-5;
+  @apply text-white bg-[black] hover:bg-[black]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 mr-2 mb-2 text-[24px] gap-5
 }
+
+
+input[type='range'] {
+  -webkit-appearance: none !important;
+  height:7px;
+  border-radius: 100px;
+  background-color: gray;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  background:white;
+  height:15px;
+  width:15px;
+  border-radius: 100px;
+}
+
+// audio::-webkit-media-controls-mute-button
+
+// audio::-webkit-media-controls-play-button
+
+// audio::-webkit-media-controls-timeline-container
+
+// audio::-webkit-media-controls-current-time-display
+
+// audio::-webkit-media-controls-time-remaining-display
+
+// audio::-webkit-media-controls-timeline
+
+// audio::-webkit-media-controls-volume-slider-container
+
+// audio::-webkit-media-controls-volume-slider
+
+// audio::-webkit-media-controls-seek-back-button
+
+// audio::-webkit-media-controls-seek-forward-button
+
+// audio::-webkit-media-controls-fullscreen-button
+
+// audio::-webkit-media-controls-rewind-button
+
+// audio::-webkit-media-controls-return-to-realtime-button
+
+// audio::-webkit-media-controls-toggle-closed-captions-button
+
+
+.bigImg {
+  width: 300px;
+  position: absolute;
+  top: -300px;
+  left: 0;
+  transition: .3s linear;
+}
+
+
