@@ -5,6 +5,7 @@ import {BiLibrary} from 'react-icons/bi'
 import {GoDiffAdded} from 'react-icons/go'
 import {FiHeart} from 'react-icons/fi'
 import {IoIosArrowForward, IoIosArrowBack} from 'react-icons/io'
+import Player from '../Components/Player';
 
 
 const Layout = () => {
@@ -33,9 +34,7 @@ const Layout = () => {
                     <Outlet/>
                 </section>
             </main>
-            <footer className='fixed bottom-0 h-[100px] w-full bg-[#181818]' >
-
-            </footer>
+            <Player/>
         </>
     );
 };
