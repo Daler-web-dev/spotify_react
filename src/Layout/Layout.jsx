@@ -10,6 +10,7 @@ import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 const Layout = () => {
     return (
         <>
+            <div className="h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212]"></div>
             <header className='pl-[22%] flex justify-between p-4'  >
                 <div className="flex gap-4">
                     <button className='bg-black rounded-full p-1' ><IoIosArrowBack color='white' size="30" /></button>
@@ -34,7 +35,7 @@ const Layout = () => {
                 </section>
             </main>
             <footer className='fixed bottom-0 h-[100px] w-full bg-[#181818]' >
-                <p>jony</p>
+
             </footer>
         </>
     );
