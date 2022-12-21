@@ -3,7 +3,6 @@ import PlaylistList from '../Components/Playlistlist';
 
 
 const HomePage = () => {
-
     return (
         <section className="">
             <div className="mt-[30px]">

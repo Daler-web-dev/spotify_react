@@ -7,7 +7,7 @@ const Login = () => {
 
     return (
         <div>
-            <a href={`${AUTH_ENDPOINT}?client_id=${client_id}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
+            <a href={`${AUTH_ENDPOINT}?client_id=${client_id}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=playlist-modify-public`}>
                 <button>Log in</button>
             </a>
         </div>

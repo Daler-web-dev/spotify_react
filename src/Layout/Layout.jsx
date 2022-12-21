@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link, Outlet }from 'react-router-dom'
 import {HiHome, HiSearch} from 'react-icons/hi'
 import {BiLibrary} from 'react-icons/bi'
@@ -6,8 +6,38 @@ import {GoDiffAdded} from 'react-icons/go'
 import {FiHeart} from 'react-icons/fi'
 import {IoIosArrowForward, IoIosArrowBack} from 'react-icons/io'
 import Player from '../Components/Player';
+import Login from '../Components/Login';
+import TOKEN from '../Contexts/token';
 
 const Layout = () => {
+
+    const [token, setToken] = useState()
+
+    useEffect(() => {
+        const hash = window.location.hash
+        let token = window.localStorage.getItem("token");
+
+        if (!token && hash) {
+            token = hash
+                .substring(1)
+                .split("&")
+                .find((elem) => elem.startsWith("access_token"))
+                .split("=")[1];
+        
+                window.location.href = "";
+                window.localStorage.setItem("token", token);
+        }
+
+        setToken(token)
+
+    }, []);
+
+    if(!token) {
+        return (
+            <Login/>
+        )
+    }
+
     return (
         <>
             <div className="h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212]"></div>
@@ -31,7 +61,9 @@ const Layout = () => {
                     </nav>
                 </aside>
                 <section className='pl-[22%]' >
-                    <Outlet />
+                    <TOKEN.Provider value={token} >
+                        <Outlet />
+                    </TOKEN.Provider>
                 </section>
             </main>
             <Player/>
