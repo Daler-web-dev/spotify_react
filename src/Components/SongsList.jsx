@@ -4,8 +4,21 @@ import { HiArrowRight } from "react-icons/hi"
 import { BiTime } from 'react-icons/bi';
 
 import Song from "./children/Song";
+import { useHttp } from "../hook/http.hook";
+import { useContext } from "react";
+import TOKEN from "../Contexts/token";
 
 const SongsList = () => {
+
+   const data = useContext(TOKEN)
+   // const { loading, request, error } = useHttp() 
+
+   // request("https://api.spotify.com/v1/me/playlists?limit=10&offset=5", "GET", null, {
+   //    "Accept": "application/json", 
+   //    "Content-Type": "application/json", 
+   //    "Authorization": `Bearer ${token}`
+   // })
+
    return (
       <div className="mt-8">
          <div className="flex justify-between items-center">
