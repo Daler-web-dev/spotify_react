@@ -9,7 +9,6 @@ import Player from '../Components/Player';
 import Login from '../Components/Login';
 import TOKEN from '../Contexts/token';
 
-
 const Layout = () => {
 
     const [token, setToken] = useState()
