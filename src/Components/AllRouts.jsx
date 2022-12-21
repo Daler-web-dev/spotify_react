@@ -11,6 +11,7 @@ const AllRouts = () => {
             <Route path="/" element={<Layout/>} >
                 <Route index element={<Home/>} />
                 <Route path="/playlist" element={<Playslist/>} />
+                <Route path="/playlist:id" element={<Playslist/>} />
                 <Route path='/settings' element={<Settings/>}/>
             </Route>
         </Routes>

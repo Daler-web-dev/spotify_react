@@ -8,16 +8,8 @@ import { useHttp } from "../hook/http.hook";
 import { useContext } from "react";
 import TOKEN from "../Contexts/token";
 
-const SongsList = () => {
+const SongsList = ({tracks}) => {
 
-   const data = useContext(TOKEN)
-   // const { loading, request, error } = useHttp() 
-
-   // request("https://api.spotify.com/v1/me/playlists?limit=10&offset=5", "GET", null, {
-   //    "Accept": "application/json", 
-   //    "Content-Type": "application/json", 
-   //    "Authorization": `Bearer ${token}`
-   // })
 
    return (
       <div className="mt-8">
@@ -53,16 +45,8 @@ const SongsList = () => {
                   <td className="flex-0"><BiTime size='24px' /></td>
                </tr>
             </thead>
-
             <tbody className='space-y-4'>
-               <Song />
-               <Song />
-               <Song />
-               <Song />
-               <Song />
-               <Song />
-               <Song />
-               <Song />
+               {tracks.map((item, idx) => <Song key={idx} item={item.track} />)}
             </tbody>
          </table>
       </div>
