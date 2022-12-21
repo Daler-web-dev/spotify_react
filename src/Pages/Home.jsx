@@ -1,40 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import Login from '../Components/Login';
+import MyPlaylist from '../Components/children/MyPlaylist';
+import PlaylistList from '../Components/Playlistlist';
 
-const Home = () => {
-    const [token, setToken] = useState()
 
-    useEffect(() => {
-        const hash = window.location.hash
-        let token = window.localStorage.getItem("token");
-
-        if (!token && hash) {
-            token = hash
-                .substring(1)
-                .split("&")
-                .find((elem) => elem.startsWith("access_token"))
-                .split("=")[1];
-        
-                window.location.href = "";
-                window.localStorage.setItem("token", token);
-        }
-
-        setToken(token)
-
-    }, []);
-    
-    if(!token) {
-        return (
-            <Login/>
-        )
-    }
+const HomePage = () => {
 
     return (
-        <div>
-            Home page
-        </div>
+        <section className="">
+            <div className="mt-[30px]">
+                <h1 className="max-sm:text-2xl font-bold text-[39px] text-white mb-[30px]">Good afternoon</h1>
+                <div className="2xl:grid-cols-3 max-sm:grid-cols-1 grid grid-cols-2 gap-4 ">
+                    <MyPlaylist />
+                    <MyPlaylist />
+                    <MyPlaylist />
+                    <MyPlaylist />
+                    <MyPlaylist />
+                    <MyPlaylist />
+                </div>
+            </div>
+            <PlaylistList />
+        </section>
     );
-};
+}
 
-
-export default Home;
+export default HomePage;

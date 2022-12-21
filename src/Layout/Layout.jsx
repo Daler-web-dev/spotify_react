@@ -6,7 +6,6 @@ import { GoDiffAdded } from 'react-icons/go'
 import { FiHeart } from 'react-icons/fi'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 
-
 const Layout = () => {
     return (
         <>
