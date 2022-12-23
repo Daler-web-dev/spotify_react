@@ -7,11 +7,9 @@ const Song = ({ item }) => {
 
    const {track, changeTrack} = useContext(currentTrack)
 
-   console.log(item.album.images[0].url);
-
    const clickSong = () => {
       let data = {
-         isPlaying: !track.isPlaying,
+         isPlaying: true,
          track: item?.preview_url
       }
 
