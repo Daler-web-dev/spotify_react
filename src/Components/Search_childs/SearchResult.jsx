@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import searchContext from "../../Contexts/searchContext";
+import searchContext from "../../Contexts/searchcontext"
 
 function RightBlock_cild() {
   const search = useContext(searchContext)

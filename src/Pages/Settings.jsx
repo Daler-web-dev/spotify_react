@@ -7,6 +7,7 @@ import Select from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import {Helmet} from "react-helmet";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -110,6 +111,9 @@ const Settings = () => {
     }
     return ( 
         <div className="w-full bg-[#121212] p-[20px] w-[90%] mb-[120px]">
+          <Helmet>
+            <title>Spotify - Settings</title>
+          </Helmet>
             <div className="w-[100%] flex justify-between mb-[30px]">
                 <p className='text-white text-[26px] font-bold'>Настройки</p>
                 <div className="w-[40px] h-[40px] bg-[#121212] rounded-[100%] flex justify-center items-center ease-in hover:bg-[#ffffff20]">

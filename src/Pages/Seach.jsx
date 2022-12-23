@@ -5,7 +5,8 @@ import { createContext } from 'react'
 import BrowseAll from '../Components/Search_childs/BrowseAll'
 import RecentSearches from '../Components/Search_childs/RecentSearches'
 import SearchResult from '../Components/Search_childs/SearchResult'
-import searchContext from '../Contexts/searchContext'
+import searchContext from '../Contexts/searchcontext'
+import {Helmet} from "react-helmet";
 
 
 // sm	640px	@media (min-width: 640px) { ... }
@@ -19,10 +20,15 @@ function Seach() {
   const search = useContext(searchContext)
   
   return (
-    <div className='w-full pt-[24px] px-[40px] mb-[100px]'>
-      {search.lengthText ? <SearchResult/> : <RecentSearches/>}
-      <BrowseAll/>
-    </div>
+    <>
+      <Helmet>
+          <title>Spotify - Search</title>
+      </Helmet>
+      <div className='w-full pt-[24px] px-[40px] mb-[100px]'>
+        {search.lengthText ? <SearchResult/> : <RecentSearches/>}
+        <BrowseAll/>
+      </div>
+    </>
   )
 }
 
