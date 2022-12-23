@@ -4,21 +4,21 @@ import currentTrack from "../../Contexts/currentTrack";
 import songImg from "../../resources/songImg.jpg";
 
 const Song = ({ item }) => {
+	const { track, changeTrack } = useContext(currentTrack);
 
-   const {track, changeTrack} = useContext(currentTrack)
+	const clickSong = () => {
+		localStorage.setItem("lastTrack", JSON.stringify(item));
+		let data = {
+			isPlaying: true,
+			track: item,
+		};
 
-   const clickSong = () => {
-      let data = {
-         isPlaying: true,
-         track: item?.preview_url
-      }
-
-      changeTrack(data)
-   }
+		changeTrack(data);
+	};
 
 	return (
 		<tr
-         onClick={clickSong}
+			onClick={clickSong}
 			className="max-sm:gap-3 flex gap-5 text-white font-bold items-center"
 		>
 			<td className="flex-0 max-sm:hiiden">1</td>

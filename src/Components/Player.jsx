@@ -19,8 +19,8 @@ const Player = () => {
     let [like, setLike] = useState(true)
     let [pause, setPause] = useState(track.isPlaying)
     let [image, setImage] = useState(false)
+    const [local, setLocal] = useState(JSON.parse(localStorage.getItem('lastTrack')))
 
-    console.log(track.isPlaying);
 
     useEffect(() => {
         const audio = document.querySelector('audio')
@@ -35,6 +35,8 @@ const Player = () => {
 
     }, [pause])
 
+    const img = track?.track?.album?.images[0]?.url || local?.album?.images[0]?.url ||  "https://i.scdn.co/image/ab67616d00001e020eb9240c0c5bbba4a0495587"
+    const artist = track?.track?.album?.artists[0]?.name || local?.album?.artists[0]?.name
 
     useEffect(() => {
         setPause(track.isPlaying)
@@ -47,10 +49,10 @@ const Player = () => {
     return ( 
         <div className="fixed bottom-0 left-0 md:bg-[#181818] h-32 w-full flex justify-between items-center p-5 z-[1000]">
             <div className="left flex gap-2 items-center">
-                {image ? <img src="https://i.scdn.co/image/ab67616d00001e020eb9240c0c5bbba4a0495587" className="bigImg" onClick={() => setImage(!image)}/> : <img src="https://i.scdn.co/image/ab67616d00001e020eb9240c0c5bbba4a0495587" className="w-20"  onClick={() => setImage(!image)}/>}           
+                {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-20"  onClick={() => setImage(!image)}/>}           
                 <div className="flex text-white flex-col">
-                    <p>Butterfly Effect</p>
-                    <p className="text-gray-400">Travis Scott</p>
+                    <p>{track?.track.name || local?.name}</p>
+                    <p className="text-gray-400">{artist}</p>
                 </div>
                 {like ? <AiFillHeart color="#63CF6C" size={25} className="ml-6" onClick={() => setLike(!like)}/> : <AiOutlineHeart className="ml-6" color="white" size={25} onClick={() => setLike(!like)}/> }
             </div>
@@ -65,7 +67,7 @@ const Player = () => {
                     <RiRepeat2Line color="c4c4c4" size={30}/>
                 </div>
                 <div className="bot">
-                    <audio src={track?.track} controls autoPlay/>
+                    <audio src={track?.track?.preview_url || local?.preview_url} controls autoPlay/>
                 </div>
             </div>
             <div className="right flex gap-2 items-center">
