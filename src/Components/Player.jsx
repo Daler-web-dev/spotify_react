@@ -15,18 +15,35 @@ import currentTrack from "../Contexts/currentTrack";
 
 const Player = () => {
 
-    const {track} = useContext(currentTrack)
+    const {track, changeTrack} = useContext(currentTrack)
 
     let [like, setLike] = useState(true)
-    let [pause, setPause] = useState(true)
+    let [pause, setPause] = useState(track.isPlaying)
     let [image, setImage] = useState(false)
 
+    console.log(track.isPlaying);
 
     useEffect(() => {
         const audio = document.querySelector('audio')
-        pause ? audio.play() : audio.pause()
+        // pause ? audio.play() : audio.pause()
+        if(pause) {
+            audio.play()
+            changeTrack({...track, isPlaying: true})
+        } else {
+            audio.pause()
+            changeTrack({...track, isPlaying: false})
+        }
+
     }, [pause])
-    
+
+
+    useEffect(() => {
+        setPause(track.isPlaying)
+    }, [track.isPlaying])
+
+    const handleSong = () => {
+        setPause(!pause)
+    }
 
     return ( 
         
@@ -43,7 +60,9 @@ const Player = () => {
                 <div className="top flex gap-2 items-center">
                     <TfiControlShuffle color="c4c4c4" size={30}/>
                     <MdSkipPrevious color="c4c4c4" size={35}/>
-                    {pause ? <MdPauseCircle color="white" size={45} onClick={() => setPause(!pause)}/> : <MdPlayCircle color="white" size={45} onClick={() => setPause(!pause)}/> }
+
+                    {pause ? <MdPauseCircle color="white" size={45} onClick={handleSong}/> : <MdPlayCircle color="white" size={45} onClick={handleSong}/> }
+                    
                     <MdSkipNext color="c4c4c4" size={35}/>
                     <RiRepeat2Line color="c4c4c4" size={30}/>
                 </div>
