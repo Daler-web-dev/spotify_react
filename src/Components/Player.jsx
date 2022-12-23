@@ -43,7 +43,7 @@ const Player = () => {
                 <div className="top flex gap-2 items-center">
                     <TfiControlShuffle color="c4c4c4" size={30}/>
                     <MdSkipPrevious color="c4c4c4" size={35}/>
-                    {pause ? <MdPauseCircle color="white" size={45} onClick={() => {setPause(!pause);}}/> : <MdPlayCircle color="white" size={45} onClick={() => setPause(!pause)}/> }
+                    {pause ? <MdPauseCircle color="white" size={45} onClick={() => setPause(!pause)}/> : <MdPlayCircle color="white" size={45} onClick={() => setPause(!pause)}/> }
                     <MdSkipNext color="c4c4c4" size={35}/>
                     <RiRepeat2Line color="c4c4c4" size={30}/>
                 </div>
@@ -62,5 +62,4 @@ const Player = () => {
 
     );
 }
-export default Player;
- 
+export default Player; 

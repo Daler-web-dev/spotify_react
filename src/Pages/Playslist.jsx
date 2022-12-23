@@ -4,6 +4,9 @@ import PlaylistOverview from "../Components/PlaylistOverview";
 import SongsList from "../Components/SongsList";
 import TOKEN from "../Contexts/token";
 import { useHttp } from "../hook/http.hook";
+import { Audio } from 'react-loader-spinner'
+import Loading from "../Components/children/Loading";
+
 
 const LikedSongs = () => {
     const [tracks, setTracks] = useState([]);
@@ -22,7 +25,7 @@ const LikedSongs = () => {
     }, []);
 
     if(loading) {
-        return <span>loading...</span>
+        return <Loading/>
     }
     if(error) {
         return <span>ERROR</span>

@@ -4,6 +4,7 @@ import MyPlaylist from '../Components/children/MyPlaylist';
 import PlaylistList from '../Components/Playlistlist';
 import TOKEN from '../Contexts/token';
 import { useHttp } from '../hook/http.hook';
+import Loading from '../Components/children/Loading';
 
 
 const Home = () => {
@@ -24,7 +25,9 @@ const Home = () => {
 
 
     if(loading) {
-        return <span>loading...</span>
+        return (
+            <Loading/>
+        )
     }
     if(error) {
         return <span>error</span>
