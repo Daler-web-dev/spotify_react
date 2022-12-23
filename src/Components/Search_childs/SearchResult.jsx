@@ -1,9 +1,9 @@
 import React from "react";
 import { useContext } from "react";
-import Searchcontext from "../../Contexts/searchcontext";
+import searchContext from "../../Contexts/searchContext";
 
 function RightBlock_cild() {
-  const search = useContext(Searchcontext)
+  const search = useContext(searchContext)
 
     return(
         <div className="flex items-center justify-between w-full p-2 rounded-lg">

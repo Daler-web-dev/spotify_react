@@ -4,6 +4,7 @@ import Layout from '../Layout/Layout';
 import Home from '../Pages/Home';
 import Playslist from '../Pages/Playslist';
 import Seach from '../Pages/Seach';
+import Settings from '../Pages/Settings';
 
 const AllRouts = () => {
     return (
@@ -12,6 +13,8 @@ const AllRouts = () => {
                 <Route index element={<Home/>} />
                 <Route path="/playlist" element={<Playslist/>} />
                 <Route path="/search" element={<Seach/>} />
+                <Route path="/playlist:id" element={<Playslist/>} />
+                <Route path='/settings' element={<Settings/>}/>
             </Route>
         </Routes>
     );

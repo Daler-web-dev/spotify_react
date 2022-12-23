@@ -5,7 +5,8 @@ import { createContext } from 'react'
 import BrowseAll from '../Components/Search_childs/BrowseAll'
 import RecentSearches from '../Components/Search_childs/RecentSearches'
 import SearchResult from '../Components/Search_childs/SearchResult'
-import Searchcontext from '../Contexts/searchcontext'
+import searchContext from '../Contexts/searchContext'
+
 
 // sm	640px	@media (min-width: 640px) { ... }
 // md	768px	@media (min-width: 768px) { ... }
@@ -15,10 +16,10 @@ import Searchcontext from '../Contexts/searchcontext'
 
 function Seach() {
 
-  const search = useContext(Searchcontext)
+  const search = useContext(searchContext)
   
   return (
-    <div className='bg-[#121212]  w-full pt-24 px-[40px] mb-[100px]'>
+    <div className='w-full pt-[24px] px-[40px] mb-[100px]'>
       {search.lengthText ? <SearchResult/> : <RecentSearches/>}
       <BrowseAll/>
     </div>
