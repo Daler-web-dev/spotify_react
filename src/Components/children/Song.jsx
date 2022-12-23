@@ -9,7 +9,7 @@ const Song = ({ item }) => {
 
    const clickSong = () => {
       let data = {
-         isPlaying: !track.isPlaying,
+         isPlaying: true,
          track: item?.preview_url
       }
 
@@ -25,7 +25,7 @@ const Song = ({ item }) => {
 			<td className="flex-0">
 				<img
 					className="max-sm:text-[14px] max-sm:w-11 max-sm:h-11 w-[52px] h-[52px]"
-					src={songImg}
+					src={item?.album?.images[0]?.url}
 					alt=""
 				/>
 			</td>
