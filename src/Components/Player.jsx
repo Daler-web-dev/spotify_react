@@ -18,15 +18,13 @@ const Player = () => {
     const {track} = useContext(currentTrack)
 
     let [like, setLike] = useState(true)
-    let [pause, setPause] = useState(false)
+    let [pause, setPause] = useState(true)
     let [image, setImage] = useState(false)
-    let [play, setPlay] =  useState(false)
 
 
     useEffect(() => {
         const audio = document.querySelector('audio')
         pause ? audio.play() : audio.pause()
-        console.log(pause);
     }, [pause])
     
 
@@ -50,7 +48,7 @@ const Player = () => {
                     <RiRepeat2Line color="c4c4c4" size={30}/>
                 </div>
                 <div className="bot">
-                    <audio src={track?.track} controls />
+                    <audio src={track?.track} controls autoPlay/>
                 </div>
             </div>
             <div className="right flex gap-2 items-center">
