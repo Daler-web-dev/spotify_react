@@ -2,7 +2,7 @@ import AllRouts from "./Components/AllRouts";
 
 function App() {
 	return (
-		<AllRouts/>
+		<AllRouts />
 	);
 }
 
