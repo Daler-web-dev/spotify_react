@@ -67,7 +67,7 @@ const Layout = () => {
 									Home
 								</button>
 							</Link>
-							<Link to="">
+							<Link to="/search">
 								<button className="navBtn">
 									<HiSearch size={32} />
 									Search
