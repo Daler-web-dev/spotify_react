@@ -30,7 +30,7 @@ const Song = ({ item }) => {
 				/>
 			</td>
 			<td className="flex-auto flex flex-col">
-				<span className="max-sm:text-[14px] truncate">{item.name}</span>
+				<span className="max-sm:text-[14px] truncate max-lg:w-40 max-lg:overflow-hidden">{item.name}</span>
 				<span className="text-[#B3B3B3] text-[14px] max-sm:text-[12px] truncate">
 					{item.artists[0].name}
 				</span>
