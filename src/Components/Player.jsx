@@ -47,9 +47,9 @@ const Player = () => {
     }
 
     return ( 
-        <div className="fixed bottom-0 left-0 md:bg-[#181818] h-32 w-full flex justify-between items-center p-5 z-[1000]">
+        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-32 w-full flex justify-between items-center p-5 z-[1000] max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
             <div className="left flex gap-2 items-center">
-                {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-20"  onClick={() => setImage(!image)}/>}           
+                {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-20 max-lg:w-12"  onClick={() => setImage(!image)}/>}           
                 <div className="flex text-white flex-col">
                     <p>{track?.track.name || local?.name}</p>
                     <p className="text-gray-400">{artist}</p>
@@ -58,19 +58,19 @@ const Player = () => {
             </div>
             <div className="mid flex flex-col items-center">
                 <div className="top flex gap-2 items-center">
-                    <TfiControlShuffle color="c4c4c4" size={30}/>
-                    <MdSkipPrevious color="c4c4c4" size={35}/>
+                    <TfiControlShuffle color="c4c4c4" size={30} className=" max-lg:hidden"/>
+                    <MdSkipPrevious color="c4c4c4" size={35} className=" max-lg:hidden"/>
 
                     {pause ? <MdPauseCircle color="white" size={45} onClick={handleSong}/> : <MdPlayCircle color="white" size={45} onClick={handleSong}/> }
                     
-                    <MdSkipNext color="c4c4c4" size={35}/>
-                    <RiRepeat2Line color="c4c4c4" size={30}/>
+                    <MdSkipNext color="c4c4c4" size={35} className=" max-lg:hidden"/>
+                    <RiRepeat2Line color="c4c4c4" size={30} className=" max-lg:hidden"/>
                 </div>
                 <div className="bot">
-                    <audio src={track?.track?.preview_url || local?.preview_url} controls autoPlay/>
+                    <audio src={track?.track?.preview_url || local?.preview_url} controls autoPlay className="max-lg:absolute max-lg:bottom-0 left-0 max-lg:w-full max-lg:h-4"/>
                 </div>
             </div>
-            <div className="right flex gap-2 items-center">
+            <div className="right flex gap-2 items-center max-lg:hidden">
                 <HiOutlineQueueList color="white" size={20}/>
                 <TbDevices2 color="white" size={20}/>
                 <TbVolume color="white" size={20}/>
