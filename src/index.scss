@@ -8,7 +8,6 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-bottom: 130px;
   background-color: #121212;
 
   &::-webkit-scrollbar {
@@ -104,13 +103,6 @@ audio::-webkit-media-controls-volume-slider-container {
 // audio::-webkit-media-controls-seek-forward-button {
 // 	display: none;
 // }
-
-
-
-
-
-
-
 .bigImg {
   width: 300px;
   position: absolute;
@@ -120,3 +112,29 @@ audio::-webkit-media-controls-volume-slider-container {
 }
 
 
+.login-page{
+  width: 100%;
+  background-color: white;
+  height: 100vh;
+  padding-top: 200px;
+}
+.logo-spotify{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.redirect-block{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.log-in-btn{
+  width: 180px;
+  height: 50px;
+  background-color: #1bd760;
+  color: white;
+  font-size: 24px;
+}
+.logo-img{
+   height: 200px; 
+}
