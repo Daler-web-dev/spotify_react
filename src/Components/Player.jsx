@@ -47,14 +47,14 @@ const Player = () => {
     }
 
     return ( 
-        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-32 w-full flex justify-between items-center p-5 z-[1000] max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
-            <div className="left flex gap-2 items-center">
-                {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-20 max-lg:w-12"  onClick={() => setImage(!image)}/>}           
+        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-fit w-full flex justify-between items-center p-5 z-[1000] max-lg:p-3 max-[500px]:p-1 max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
+            <div className="left flex gap-2 items-center max-lg:gap-1">
+                {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-20 rounded-xl max-lg:w-12 max-[500px]:w-10"  onClick={() => setImage(!image)}/>}           
                 <div className="flex text-white flex-col">
-                    <p>{track?.track.name || local?.name}</p>
-                    <p className="text-gray-400">{artist}</p>
+                    <p className="whitespace-nowrap w-56 overflow-hidden max-lg:text-sm max-[500px]:text-xs max-lg:w-40 max-lg:overflow-hidden max-[500px]:w-36 max-[500px]:overflow-hidden max-sm:w-32  max-sm:overflow-hidden">{track?.track.name || local?.name}</p>
+                    <p className="text-gray-400 max-lg:text-sm max-[500px]:text-xs">{artist}</p>
                 </div>
-                {like ? <AiFillHeart color="#63CF6C" size={25} className="ml-6" onClick={() => setLike(!like)}/> : <AiOutlineHeart className="ml-6" color="white" size={25} onClick={() => setLike(!like)}/> }
+                {like ? <AiFillHeart color="#63CF6C" size={25} className="ml-6 max-lg:ml-2" onClick={() => setLike(!like)}/> : <AiOutlineHeart className="ml-6" color="white" size={25} onClick={() => setLike(!like)}/> }
             </div>
             <div className="mid flex flex-col items-center">
                 <div className="top flex gap-2 items-center">
