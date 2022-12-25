@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { HiHome, HiSearch } from "react-icons/hi";
-import { BiLibrary } from "react-icons/bi";
-import { GoDiffAdded } from "react-icons/go";
-import { FiHeart } from "react-icons/fi";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { Outlet } from "react-router-dom";
 import Player from "../Components/Player";
 import Login from "../Components/Login";
 import TOKEN from "../Contexts/token";
@@ -50,13 +45,13 @@ const Layout = () => {
 			<currentTrack.Provider value={{ track, changeTrack }}>
 				<div className="h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212]"></div>
 				<div className="flex-1 h-fit px-6">
-					<Header/>
-						<Aside/>
-						<main className='pb-10 md:pl-[18%] pl-[0%]' >
-							<TOKEN.Provider value={token}>
-								<Outlet />
-							</TOKEN.Provider>
-						</main>
+					<Header />
+					<Aside />
+					<main className='pb-10 md:pl-[18%] pl-[0%]' >
+						<TOKEN.Provider value={token}>
+							<Outlet />
+						</TOKEN.Provider>
+					</main>
 					<Player />
 				</div>
 			</currentTrack.Provider>
