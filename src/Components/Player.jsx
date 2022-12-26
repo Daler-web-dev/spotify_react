@@ -21,7 +21,7 @@ const Player = () => {
     let [pause, setPause] = useState(track.isPlaying)
     let [image, setImage] = useState(false)
 
-    console.log(track.isPlaying);
+    // console.log(track.isPlaying);
 
     useEffect(() => {
         const audio = document.querySelector('audio')

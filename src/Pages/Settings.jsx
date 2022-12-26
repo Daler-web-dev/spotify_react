@@ -110,7 +110,7 @@ const Settings = () => {
       );
     }
     return ( 
-        <div className="w-full bg-[#121212] p-[20px] w-[90%] mb-[120px]">
+        <div className="w-full bg-[#121212] p-[20px] mb-[120px]">
           <Helmet>
             <title>Spotify - Settings</title>
           </Helmet>

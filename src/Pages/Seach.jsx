@@ -1,7 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContext } from 'react'
-import { useEffect } from 'react'
-import { createContext } from 'react'
 import BrowseAll from '../Components/Search_childs/BrowseAll'
 import RecentSearches from '../Components/Search_childs/RecentSearches'
 import SearchResult from '../Components/Search_childs/SearchResult'
