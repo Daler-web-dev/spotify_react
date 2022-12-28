@@ -1,8 +1,6 @@
 import playlistImg from '../resources/playlistImg.jpg'
 
 const PlaylistOverview = ({album}) => {
-   console.log(album, 'hello world ');
-
    return (
       <div className='max-md:mt-5 max-sm:mt-3 max-sm:flex-col max-sm:items-center max-sm:justify-center flex items-end mt-7'>
          <img className='max-2xl:w-[235px] max-md:w-[190px] max-md:mr-4 max-sm:w-full max-sm:max-w-md max-sm:mr-0 max-w-full mr-8' src={playlistImg} alt="Playlist" />

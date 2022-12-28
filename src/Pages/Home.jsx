@@ -37,7 +37,6 @@ const Home = () => {
 				Authorization: `Bearer ${token}`,
 			}
 		).then(res => {
-			console.log(res.playlists);
 			setPlayslits(res?.playlists?.items)
 		})
 

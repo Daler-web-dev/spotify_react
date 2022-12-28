@@ -10,8 +10,6 @@ const PlaylistCard = ({name, description, images, tracks}) => {
       navigate('/playlist?id=' + name, {state: tracks?.href})
    }
 
-   console.log(description);
-
    return (
       <div onClick={showPlaylist || playlist} className="max-sm:max-w-full max-sm:p-3 bg-[#ffffff10] p-5 rounded-lg w-full max-w-[224px]">
          <img src={img} alt="" className="w-full" />
