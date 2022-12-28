@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Player from "../Components/Player";
 import Login from "../Components/Login";
@@ -36,6 +36,7 @@ const Layout = () => {
 		setToken(token);
 	}, []);
 
+
 	if (!token) {
 		return <Login />;
 	}
@@ -49,7 +50,7 @@ const Layout = () => {
 					<Aside />
 					<main className='pb-10 md:pl-[18%] pl-[0%]' >
 						<TOKEN.Provider value={token}>
-							<Outlet />
+							    <Outlet />
 						</TOKEN.Provider>
 					</main>
 					<Player />

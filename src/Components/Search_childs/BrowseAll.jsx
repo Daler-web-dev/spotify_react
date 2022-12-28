@@ -68,11 +68,11 @@ function BrowseAll_child({ item }) {
   return (
     <div
       style={{ background: item.bg }}
-      className={`relative h-[224px] rounded-xl p-[20px]`}
+      className={`relative  xl:h-[224px] md:h-[200px] sm:h-[150px] h-[100px] rounded-xl p-[20px]`}
     >
-      <p className="text-white text-2xl font-bold">{item.title}</p>
+      <p className="text-white  font-bold xl:text-2xl md:text-xl sm:text-xl">{item.title}</p>
       <img
-        className="absolute bottom-0 right-0"
+        className="absolute bottom-0 right-0 xl:h-auto md:h-32 sm:h-24 h-20"
         src="/img/Album Art1.svg"
         alt=""
       />
@@ -87,8 +87,8 @@ function BrowseAll() {
 
   return (
     <div>
-      <h2 className="text-white text-3xl font-bold mb-[24px]">Browse all</h2>
-      <div className="grid grid-cols-4 gap-10">
+      <h2 className="text-white  font-bold mb-[20px] xl:text-3xl md:text-3xl sm:text-2xl">Browse all</h2>
+      <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
         <BrowseAllChild />
       </div>
     </div>
