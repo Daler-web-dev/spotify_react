@@ -9,8 +9,6 @@ import { useContext } from "react";
 import TOKEN from "../Contexts/token";
 
 const SongsList = ({tracks}) => {
-
-
    return (
       <div className="mt-8">
          <div className="flex justify-between items-center">
@@ -46,7 +44,7 @@ const SongsList = ({tracks}) => {
                </tr>
             </thead>
             <tbody className='space-y-4'>
-               {tracks.map((item, idx) => <Song key={idx} item={item.track} />)}
+               {tracks.map((item, idx) => <Song key={idx} idx={idx + 1} item={item.track} />)}
             </tbody>
          </table>
       </div>

@@ -3,7 +3,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import currentTrack from "../../Contexts/currentTrack";
 import songImg from "../../resources/songImg.jpg";
 
-const Song = ({ item }) => {
+const Song = ({ item, idx }) => {
 	const { track, changeTrack } = useContext(currentTrack);
 
 	const clickSong = () => {
@@ -21,7 +21,7 @@ const Song = ({ item }) => {
 			onClick={clickSong}
 			className="max-sm:gap-3 flex gap-5 text-white font-bold items-center"
 		>
-			<td className="flex-0 max-sm:hiiden">1</td>
+			<td className="flex-0 max-sm:hiiden">{idx}</td>
 			<td className="flex-0">
 				<img
 					className="max-sm:text-[14px] max-sm:w-11 max-sm:h-11 w-[52px] h-[52px]"

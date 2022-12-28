@@ -12,17 +12,21 @@ import {Helmet} from "react-helmet";
 
 const LikedSongs = () => {
     const [tracks, setTracks] = useState([]);
+    const [album, setAlbum] = useState(null);
     const {error, loading, request} = useHttp()
     const token = useContext(TOKEN)
     const {state} = useLocation()
-    
+
     useEffect(() => {
         request(state, "GET", null, {
             "Accept": "application/json",
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         })
-        .then(res => setTracks(res.items))
+        .then(res => {
+            setAlbum(res);
+            setTracks(res.items)
+        })
 
     }, []);
 
@@ -38,7 +42,7 @@ const LikedSongs = () => {
             <Helmet>
                 <title>Spotify - Playlist</title>
             </Helmet>
-            <PlaylistOverview />
+            <PlaylistOverview album={album} />
             <SongsList tracks={tracks} />
         </div>
     );

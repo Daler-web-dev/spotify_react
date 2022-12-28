@@ -47,7 +47,7 @@ const Layout = () => {
 				<div className="flex-1 h-fit px-6">
 					<Header />
 					<Aside />
-					<main className='pb-10 md:pl-[18%] pl-[0%]' >
+					<main className='pb-40 md:pl-[18%] pl-[0%] ' >
 						<TOKEN.Provider value={token}>
 							<Outlet />
 						</TOKEN.Provider>

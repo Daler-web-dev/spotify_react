@@ -9,22 +9,38 @@ import {Helmet} from "react-helmet";
 
 const Home = () => {
 	const [plaslists, setPlayslits] = useState([]);
+	const [myPlaslists, setMyPlayslits] = useState([]);
 	const { loading, error, request } = useHttp();
 
 	const token = useContext(TOKEN);
 
 	useEffect(() => {
+		let date = new Date()
+		let month = date.getMonth() + 1
+		let timestamp = date.getFullYear() + '-' + month + '-' + date.getDate() + ' ' + date.getHours() + ":" + date.getMinutes() + " UTC"
+		timestamp = new Date(timestamp).toISOString()
+
 		request(
-			"https://api.spotify.com/v1/me/playlists?limit=6&offset=0",
+			"https://api.spotify.com/v1/me/playlists?limit=50&offset=0",
 			"GET",
 			null,
 			{
 				Authorization: `Bearer ${token}`,
 			}
 		).then((res) => {
-			setPlayslits(res.items);
-			console.log(res.items);
+			setMyPlayslits(res.items);
 		});
+		request(`https://api.spotify.com/v1/browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=10&offset=5`, 
+			"GET",
+			null,
+			{
+				Authorization: `Bearer ${token}`,
+			}
+		).then(res => {
+			console.log(res.playlists);
+			setPlayslits(res?.playlists?.items)
+		})
+
 	}, []);
 
 	if (loading) {
@@ -45,12 +61,12 @@ const Home = () => {
 						Good afternoon
 					</h1>
 					<div className="2xl:grid-cols-3 max-sm:grid-cols-1 grid grid-cols-2 gap-4 ">
-						{plaslists.map((item) => (
+						{myPlaslists.map((item) => (
 							<MyPlaylist key={item.id} {...item} />
 						))}
 					</div>
 				</div>
-				<PlaylistList />
+				<PlaylistList plaslists={plaslists} />
 			</section>
 		</>
 	);
