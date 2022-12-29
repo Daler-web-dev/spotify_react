@@ -5,7 +5,7 @@ import PlaylistList from "../Components/Playlistlist";
 import TOKEN from "../Contexts/token";
 import { useHttp } from "../hook/http.hook";
 import Loading from "../Components/children/Loading";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 const Home = () => {
 	const [plaslists, setPlayslits] = useState([]);

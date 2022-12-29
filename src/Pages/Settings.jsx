@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

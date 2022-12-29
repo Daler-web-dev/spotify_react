@@ -6,8 +6,7 @@ import TOKEN from "../Contexts/token";
 import { useHttp } from "../hook/http.hook";
 import { Audio } from 'react-loader-spinner'
 import Loading from "../Components/children/Loading";
-import {Helmet} from "react-helmet";
-
+import {Helmet} from "react-helmet-async";
 
 
 const LikedSongs = () => {

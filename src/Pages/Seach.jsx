@@ -4,7 +4,7 @@ import BrowseAll from '../Components/Search_childs/BrowseAll'
 import RecentSearches from '../Components/Search_childs/RecentSearches'
 import SearchResult from '../Components/Search_childs/SearchResult'
 import searchContext from '../Contexts/searchcontext'
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 
 function Seach() {

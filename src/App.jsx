@@ -1,8 +1,11 @@
 import AllRouts from "./Components/AllRouts";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 function App() {
 	return (
-		<AllRouts />
+		<HelmetProvider>
+			<AllRouts />
+		</HelmetProvider>
 	);
 }
 
