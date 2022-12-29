@@ -71,7 +71,7 @@ const Home = () => {
 					</h1>
 					<div className="2xl:grid-cols-3 max-sm:grid-cols-1 grid grid-cols-2 gap-4 ">
 						{
-							errorMsg.length > 0 ? <span className="error-text" >{errorMsg}</span> : myPlaslists.map((item) => (
+							errorMsg.length > 0 ? <span className="text-[red] text-[24px]" >{errorMsg}</span> : myPlaslists.map((item) => (
 								<MyPlaylist key={item.id} {...item} />
 							))
 						}
