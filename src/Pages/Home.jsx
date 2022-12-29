@@ -10,6 +10,8 @@ import {Helmet} from "react-helmet-async";
 const Home = () => {
 	const [plaslists, setPlayslits] = useState([]);
 	const [myPlaslists, setMyPlayslits] = useState([]);
+	const [errorMsg, setErrorMsg] = useState('');
+	
 	const { loading, error, request } = useHttp();
 
 	const token = useContext(TOKEN);
@@ -18,7 +20,15 @@ const Home = () => {
 		let date = new Date()
 		let month = date.getMonth() + 1
 		let timestamp = date.getFullYear() + '-' + month + '-' + date.getDate() + ' ' + date.getHours() + ":" + date.getMinutes() + " UTC"
-		timestamp = new Date(timestamp).toISOString()
+		
+		
+		function dateIsValid(date) {
+			return !Number.isNaN(new Date(date).getTime());
+		}
+		
+		timestamp = dateIsValid(timestamp) ?  new Date(timestamp).toISOString() : setErrorMsg('Not a valid date. Please try again')
+
+
 
 		request(
 			"https://api.spotify.com/v1/me/playlists?limit=50&offset=0",
@@ -60,12 +70,14 @@ const Home = () => {
 						Good afternoon
 					</h1>
 					<div className="2xl:grid-cols-3 max-sm:grid-cols-1 grid grid-cols-2 gap-4 ">
-						{myPlaslists.map((item) => (
-							<MyPlaylist key={item.id} {...item} />
-						))}
+						{
+							errorMsg.length > 0 ? <span className="error-text" >{errorMsg}</span> : myPlaslists.map((item) => (
+								<MyPlaylist key={item.id} {...item} />
+							))
+						}
 					</div>
 				</div>
-				<PlaylistList plaslists={plaslists} />
+				<PlaylistList errorMsg={errorMsg} plaslists={plaslists} />
 			</section>
 		</>
 	);
