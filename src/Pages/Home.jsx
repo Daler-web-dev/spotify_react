@@ -24,12 +24,9 @@ const Home = () => {
 	function dateIsValid(date) {
 		return !Number.isNaN(new Date(date).getTime());
 	}
-	
 	timestamp = dateIsValid(timestamp) ? new Date(timestamp).toISOString() : setErrorMsg('Not a valid date. Please try again')
+	
 	useEffect(() => {
-
-
-
 		request(
 			"https://api.spotify.com/v1/me/playlists?limit=50&offset=0",
 			"GET",
