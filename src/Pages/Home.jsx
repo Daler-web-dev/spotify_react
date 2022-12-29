@@ -16,17 +16,18 @@ const Home = () => {
 
 	const token = useContext(TOKEN);
 
-	let date = new Date()
-	let month = date.getMonth() + 1
-	let timestamp = date.getFullYear() + '-' + month + '-' + date.getDate() + ' ' + date.getHours() + ":" + date.getMinutes() + " UTC"
-	
-	
-	function dateIsValid(date) {
-		return !Number.isNaN(new Date(date).getTime());
-	}
-	timestamp = dateIsValid(timestamp) ? new Date(timestamp).toISOString() : setErrorMsg('Not a valid date. Please try again')
 	
 	useEffect(() => {
+		let date = new Date()
+		let month = date.getMonth() + 1
+		let timestamp = date.getFullYear() + '-' + month + '-' + date.getDate() + ' ' + date.getHours() + ":" + date.getMinutes() + " UTC"
+		
+		function dateIsValid(date) {
+			return !Number.isNaN(new Date(date).getTime());
+		}
+		timestamp = dateIsValid(timestamp) ? new Date(timestamp).toISOString() : setErrorMsg('Not a valid date. Please try again')
+
+		
 		request(
 			"https://api.spotify.com/v1/me/playlists?limit=50&offset=0",
 			"GET",
@@ -68,7 +69,7 @@ const Home = () => {
 					</h1>
 					<div className="2xl:grid-cols-3 max-sm:grid-cols-1 grid grid-cols-2 gap-4 ">
 						{
-							errorMsg.length > 0 ? <span className="text-[red] text-[24px]" >{errorMsg}</span> : myPlaslists.map((item) => (
+							myPlaslists.map((item) => (
 								<MyPlaylist key={item.id} {...item} />
 							))
 						}
