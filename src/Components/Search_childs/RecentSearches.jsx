@@ -17,7 +17,7 @@ function RecentSearches_child() {
 
 function RecentSearches() {
   return (
-    <div className='RecentSearches mb-[50px]'>
+    <div className='RecentSearches mb-[50px] hidden md:block'>
         <h1 className='text-3xl font-bold mb-[24px] text-[#fff]'>Recent searches</h1>
         <div className='flex gap-[20px]'>
             <RecentSearches_child/>
