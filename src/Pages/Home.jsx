@@ -16,17 +16,17 @@ const Home = () => {
 
 	const token = useContext(TOKEN);
 
+	let date = new Date()
+	let month = date.getMonth() + 1
+	let timestamp = date.getFullYear() + '-' + month + '-' + date.getDate() + ' ' + date.getHours() + ":" + date.getMinutes() + " UTC"
+	
+	
+	function dateIsValid(date) {
+		return !Number.isNaN(new Date(date).getTime());
+	}
+	
+	timestamp = dateIsValid(timestamp) ? new Date(timestamp).toISOString() : setErrorMsg('Not a valid date. Please try again')
 	useEffect(() => {
-		let date = new Date()
-		let month = date.getMonth() + 1
-		let timestamp = date.getFullYear() + '-' + month + '-' + date.getDate() + ' ' + date.getHours() + ":" + date.getMinutes() + " UTC"
-		
-		
-		function dateIsValid(date) {
-			return !Number.isNaN(new Date(date).getTime());
-		}
-		
-		timestamp = dateIsValid(timestamp) ?  new Date(timestamp).toISOString() : setErrorMsg('Not a valid date. Please try again')
 
 
 
