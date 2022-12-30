@@ -21,13 +21,14 @@ const Home = () => {
 		let date = new Date()
 		let month = date.getMonth() + 1
 		let timestamp = date.getFullYear() + '-' + month + '-' + date.getDate() + ' ' + date.getHours() + ":" + date.getMinutes() + " UTC"
+		timestamp = timestamp.replace(/-/g, "/")
 		
 		function dateIsValid(date) {
 			return !Number.isNaN(new Date(date).getTime());
 		}
 		timestamp = dateIsValid(timestamp) ? new Date(timestamp).toISOString() : setErrorMsg('Not a valid date. Please try again')
 
-		
+
 		request(
 			"https://api.spotify.com/v1/me/playlists?limit=50&offset=0",
 			"GET",
