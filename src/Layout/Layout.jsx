@@ -53,7 +53,7 @@ const Layout = () => {
 		<>
 			<currentTrack.Provider value={{ track, changeTrack }}>
 				<div className="h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#232323] to-[#121212]"></div>
-				<div className="flex-1 h-fit px-6">
+				<div className="flex-1 h-fit px-6 max-sm:px-3">
 					<Header user={user} />
 					<Aside />
 					<main className='pb-40 md:pl-[18%] pl-[0%] ' >
