@@ -13,7 +13,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-const Header = () => {
+const Header = ({user}) => {
   const navigate = useNavigate();
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -32,6 +32,8 @@ const Header = () => {
   };
 
   const location = useLocation();
+
+  const userImage = user?.images[0]?.url
 
   return (
     <header className="max-lg:py-4 max-sm::py-3 text-white py-5 flex items-center justify-between md:pl-[18%] pl-[0%]">
@@ -58,16 +60,19 @@ const Header = () => {
             />
           </div>
         ) : null}
-        <p className="max-sm:block hidden text-2xl font-semibold">
-          hello world
-        </p>
+        {/* <p className="max-sm:block hidden text-2xl font-semibold">
+          {user?.display_name}
+        </p> */}
       </div>
 
-      <div className="max-sm:flex max-sm:gap-2 max-sm: w-fit">
-        <Box sx={{ flexGrow: 0 }}>
+      <div className="flex max-sm:gap-2 max-sm: w-fit max-sm:">
+          <p className="block max-sm:hidden text-2xl font-semibold mr-5">
+            {user?.display_name}
+          </p>
+        <Box sx={{ flexGrow: 0 }} >
           <Tooltip title="Open settings" sx={{ background: "#555555" }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+              <Avatar alt={user?.display_name} src={userImage || "/static/images/avatar/2.jpg"} />
             </IconButton>
           </Tooltip>
           <Menu
@@ -89,14 +94,18 @@ const Header = () => {
               <Typography textAlign="center">Profile</Typography>
             </MenuItem>
             <MenuItem onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">Account</Typography>
+              <Link to="/search" >
+                <Typography textAlign="center">Search</Typography>
+              </Link>
             </MenuItem>
             <MenuItem onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">Dashboard</Typography>
+              <Link to="/settings" >
+                <Typography textAlign="center">Settings</Typography>
+              </Link>
             </MenuItem>
             <MenuItem onClick={handleCloseUserMenu}>
               <Typography onClick={localStorageClear} textAlign="center">
-                log off
+                Log out
               </Typography>
             </MenuItem>
           </Menu>

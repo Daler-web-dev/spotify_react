@@ -6,6 +6,7 @@ import TOKEN from "../Contexts/token";
 import currentTrack from "../Contexts/currentTrack";
 import Aside from "../Components/Aside";
 import Header from "../Components/Header";
+import { useHttp } from "../hook/http.hook";
 
 const Layout = () => {
 	const [token, setToken] = useState();
@@ -13,6 +14,9 @@ const Layout = () => {
 		isPLaying: false,
 		track: "",
 	});
+	const [user, setUser] = useState(null)
+
+	const {request} = useHttp()
 
 	const changeTrack = (data) => {
 		setTrack(data);
@@ -34,9 +38,13 @@ const Layout = () => {
 		}
 
 		setToken(token);
+		
+		request('https://api.spotify.com/v1/me', "GET", null,
+		{
+			Authorization: `Bearer ${token}`,
+		}).then(res => setUser(res))
 	}, []);
-
-
+	
 	if (!token) {
 		return <Login />;
 	}
@@ -46,7 +54,7 @@ const Layout = () => {
 			<currentTrack.Provider value={{ track, changeTrack }}>
 				<div className="h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212]"></div>
 				<div className="flex-1 h-fit px-6">
-					<Header />
+					<Header user={user} />
 					<Aside />
 					<main className='pb-40 md:pl-[18%] pl-[0%] ' >
 						<TOKEN.Provider value={token}>

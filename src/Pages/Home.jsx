@@ -11,6 +11,8 @@ const Home = () => {
 	const [plaslists, setPlayslits] = useState([]);
 	const [myPlaslists, setMyPlayslits] = useState([]);
 	const [errorMsg, setErrorMsg] = useState('');
+	const [greeting, setGreeting] = useState('Hello');
+	
 	
 	const { loading, error, request } = useHttp();
 
@@ -51,12 +53,30 @@ const Home = () => {
 
 	}, []);
 
+	useEffect(() => {
+		let time = new Date().getHours()
+		console.log(time);
+
+		if(time > 18) {
+			setGreeting("Good evening")
+		} else if(time > 12) {
+			setGreeting("Good afternoon")
+		} else if(time > 6) {
+			setGreeting("Good morning")
+		} else if(time >= 0) {
+			setGreeting("Good night")
+		}
+
+	}, [])
+
 	if (loading) {
 		return <Loading />;
 	}
 	if (error) {
 		return <span>error</span>;
 	}
+
+	
 
 	return (
 		<>
@@ -66,7 +86,7 @@ const Home = () => {
 			<section className="">
 				<div className="mt-[30px]">
 					<h1 className="max-sm:text-2xl font-bold text-[39px] text-white mb-[30px]">
-						Good afternoon
+						{greeting}
 					</h1>
 					<div className="2xl:grid-cols-3 max-sm:grid-cols-1 grid grid-cols-2 gap-4 ">
 						{
