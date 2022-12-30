@@ -88,7 +88,7 @@ const Home = () => {
 					<h1 className="max-sm:text-2xl font-bold text-[39px] text-white mb-[30px]">
 						{greeting}
 					</h1>
-					<div className="2xl:grid-cols-3 max-sm:grid-cols-1 grid grid-cols-2 gap-4 ">
+					<div className="2xl:grid-cols-3 max-sm:grid-cols-2 grid grid-cols-2 gap-4 max-sm:gap-2 ">
 						{
 							myPlaslists.map((item) => (
 								<MyPlaylist key={item.id} {...item} />

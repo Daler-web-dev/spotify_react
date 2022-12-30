@@ -60,9 +60,9 @@ const Header = ({user}) => {
             />
           </div>
         ) : null}
-        {/* <p className="max-sm:block hidden text-2xl font-semibold">
+        <p className="max-sm:block hidden text-2xl font-semibold">
           {user?.display_name}
-        </p> */}
+        </p>
       </div>
 
       <div className="flex max-sm:gap-2 max-sm: w-fit max-sm:">
