@@ -38,7 +38,7 @@ const Layout = () => {
 		}
 
 		setToken(token);
-		
+
 		request('https://api.spotify.com/v1/me', "GET", null,
 		{
 			Authorization: `Bearer ${token}`,
@@ -52,7 +52,7 @@ const Layout = () => {
 	return (
 		<>
 			<currentTrack.Provider value={{ track, changeTrack }}>
-				<div className="h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212]"></div>
+				<div className="h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#232323] to-[#121212]"></div>
 				<div className="flex-1 h-fit px-6">
 					<Header user={user} />
 					<Aside />
