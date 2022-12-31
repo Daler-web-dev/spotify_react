@@ -7,6 +7,7 @@ import currentTrack from "../Contexts/currentTrack";
 import Aside from "../Components/Aside";
 import Header from "../Components/Header";
 import { useHttp } from "../hook/http.hook";
+import bgContext from "../Contexts/backgroundContext";
 
 const Layout = () => {
 	const [token, setToken] = useState();
@@ -15,12 +16,17 @@ const Layout = () => {
 		track: "",
 	});
 	const [user, setUser] = useState(null)
+	const [bgColor, setBgColor] = useState('')
 
 	const {request} = useHttp()
 
 	const changeTrack = (data) => {
 		setTrack(data);
 	};
+
+	const setContextBg = (data) => {
+		setBgColor(data)
+	}
 
 	useEffect(() => {
 		const hash = window.location.hash;
@@ -49,10 +55,15 @@ const Layout = () => {
 		return <Login />;
 	}
 
+	let rgb = `rgb(${bgColor.r}, ${bgColor.g}, ${bgColor.b})`
+
 	return (
 		<>
+		<bgContext.Provider value={{bgColor, setContextBg}} >
 			<currentTrack.Provider value={{ track, changeTrack }}>
-				<div className="h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#232323] to-[#121212]"></div>
+				<div className='h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#37373720] to-[#121212]'
+					style={{background: `linear-gradient(${rgb}, #121212)`}}
+				></div>
 				<div className="flex-1 h-fit px-6 max-sm:px-3">
 					<Header user={user} />
 					<Aside />
@@ -64,6 +75,7 @@ const Layout = () => {
 					<Player />
 				</div>
 			</currentTrack.Provider>
+		</bgContext.Provider>
 		</>
 	);
 };
