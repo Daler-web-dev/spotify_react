@@ -10,6 +10,7 @@ import {Helmet} from "react-helmet-async";
 const Home = () => {
 	const [plaslists, setPlayslits] = useState([]);
 	const [myPlaslists, setMyPlayslits] = useState([]);
+	const [releses, setReleses] = useState([]);
 	const [errorMsg, setErrorMsg] = useState('');
 	const [greeting, setGreeting] = useState('Hello');
 	
@@ -41,7 +42,7 @@ const Home = () => {
 		).then((res) => {
 			setMyPlayslits(res.items);
 		});
-		request(`https://api.spotify.com/v1/browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=10&offset=5`, 
+		request(`https://api.spotify.com/v1/browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=50&offset=5`, 
 			"GET",
 			null,
 			{
@@ -50,7 +51,15 @@ const Home = () => {
 		).then(res => {
 			setPlayslits(res?.playlists?.items)
 		})
-
+		request(`https://api.spotify.com/v1/browse/new-releases?country=UZ&limit=20&offset=5`, 
+			"GET",
+			null,
+			{
+				Authorization: `Bearer ${token}`,
+			}
+		).then(res => {
+			setReleses(res?.albums?.items)
+		})
 	}, []);
 
 	useEffect(() => {
@@ -93,7 +102,8 @@ const Home = () => {
 						}
 					</div>
 				</div>
-				<PlaylistList errorMsg={errorMsg} plaslists={plaslists} />
+				<PlaylistList type={'songs'} errorMsg={errorMsg} plaslists={plaslists} title={"Made for you"} />
+				<PlaylistList type={'album'} errorMsg={errorMsg} plaslists={releses} title={"New Releses"} />
 			</section>
 		</>
 	);

@@ -8,7 +8,6 @@ const PlaylistOverview = ({album, coverImage, artists}) => {
    const {setContextBg} = useContext(bgContext);
    useEffect(() => {
       setContextBg(getAverageRGB(imgEl.current))
-      console.log(getAverageRGB(imgEl.current), 'overview');
    }, [imgEl.current]);
 
    return (

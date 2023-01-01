@@ -4,7 +4,7 @@ import currentTrack from "../../Contexts/currentTrack";
 import songImg from "../../resources/songImg.jpg";
 
 const Song = ({ item, idx }) => {
-	const { track, changeTrack } = useContext(currentTrack);
+	const { changeTrack } = useContext(currentTrack);
 
 	const clickSong = () => {
 		localStorage.setItem("lastTrack", JSON.stringify(item));
@@ -15,6 +15,7 @@ const Song = ({ item, idx }) => {
 
 		changeTrack(data);
 	};
+	const img = item?.album?.images[0]?.url
 
 	return (
 		<tr
@@ -23,11 +24,15 @@ const Song = ({ item, idx }) => {
 		>
 			<td className="flex-0 max-sm:hiiden">{idx}</td>
 			<td className="flex-0">
-				<img
-					className="max-sm:text-[14px] max-sm:w-11 max-sm:h-11 w-[52px] h-[52px]"
-					src={item?.album?.images[0]?.url}
-					alt=""
-				/>
+				{
+					img ? 
+					<img
+						className="max-sm:text-[14px] max-sm:w-11 max-sm:h-11 w-[52px] h-[52px]"
+						src={img}
+						alt=""
+					/> :
+					<div></div>
+				}
 			</td>
 			<td className="flex-auto flex flex-col">
 				<span className="max-sm:text-[14px] truncate max-lg:w-40 max-lg:overflow-hidden">{item.name}</span>

@@ -16,19 +16,29 @@ const LikedSongs = () => {
     const token = useContext(TOKEN)
     const {state} = useLocation()
 
-    
     useEffect(() => {
-        request(state.track, "GET", null, {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        })
-        .then(res => {
-            setAlbum(res);
-            setTracks(res.items)
-        })
+        if(state.track) {
+            request(state.track, "GET", null, {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            })
+            .then(res => {
+                setAlbum(res);
+                setTracks(res.items)
+            })
+        } else {
+            request(state.playlist.href + '/tracks', "GET", null, {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            })
+            .then(res => {
+                setAlbum(res);
+                setTracks(res.items)
+            })
+        }
     }, []);
-
 
     const getArtistsNames = () => {
         let names = tracks.map(item => item?.track?.artists[0]?.name)
@@ -51,7 +61,7 @@ const LikedSongs = () => {
                 <title>Spotify - Playlist</title>
             </Helmet>
             <PlaylistOverview album={album} coverImage={state.img} artists={getArtistsNames} />
-            <SongsList tracks={tracks} />
+            <SongsList tracks={tracks}/>
         </div>
     );
 }
