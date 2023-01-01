@@ -8,6 +8,8 @@ import Aside from "../Components/Aside";
 import Header from "../Components/Header";
 import { useHttp } from "../hook/http.hook";
 import bgContext from "../Contexts/backgroundContext";
+import searchContext from "../Contexts/searchcontext";
+
 
 const Layout = () => {
 	const [token, setToken] = useState();
@@ -17,6 +19,7 @@ const Layout = () => {
 	});
 	const [user, setUser] = useState(null)
 	const [bgColor, setBgColor] = useState('')
+	const [searchText, setSearchText] = useState('')
 	const [anim, setAnim] = useState(false)
 	
 
@@ -29,6 +32,11 @@ const Layout = () => {
 	const setContextBg = (data) => {
 		setBgColor(data)
 	}
+
+	const changeSearchText = (text) => {
+		setSearchText(text)
+	}
+
 
 	useEffect(() => {
 		const hash = window.location.hash;
@@ -67,22 +75,24 @@ const Layout = () => {
 		<>
 		<bgContext.Provider value={{bgColor, setContextBg}} >
 			<currentTrack.Provider value={{ track, changeTrack }}>
-				<div className='h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#37373720] to-[#121212]'
-					style={{background: `linear-gradient(${bgColor}, #121212)`, opacity: anim ? "1" : "0" }}
-				></div>
-				<div className='h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#37373720] to-[#121212]'
-					style={{background: `linear-gradient(${bgColor}, #121212)`, opacity: anim ? "0" : "1"}}
-				></div>
-				<div className="flex-1 h-fit px-6 max-sm:px-3">
-					<Header user={user} />
-					<Aside />
-					<main className='pb-40 md:pl-[18%] pl-[0%] ' >
-						<TOKEN.Provider value={token}>
-							    <Outlet />
-						</TOKEN.Provider>
-					</main>
-					<Player />
-				</div>
+				<searchContext.Provider value={{searchText, changeSearchText}} >
+					<div className='h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#37373720] to-[#121212]'
+						style={{background: `linear-gradient(${bgColor}, #121212)`, opacity: anim ? "1" : "0" }}
+					></div>
+					<div className='h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#37373720] to-[#121212]'
+						style={{background: `linear-gradient(${bgColor}, #121212)`, opacity: anim ? "0" : "1"}}
+					></div>
+					<div className="flex-1 h-fit px-6 max-sm:px-3">
+						<Header user={user} />
+						<Aside />
+						<main className='pb-40 md:pl-[18%] pl-[0%] ' >
+							<TOKEN.Provider value={token}>
+									<Outlet />
+							</TOKEN.Provider>
+						</main>
+						<Player />
+					</div>
+				</searchContext.Provider>
 			</currentTrack.Provider>
 		</bgContext.Provider>
 		</>

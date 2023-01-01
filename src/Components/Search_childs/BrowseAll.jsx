@@ -82,13 +82,13 @@ function BrowseAll_child({ item }) {
 
 function BrowseAll() {
   const BrowseAllChild = () => {
-    return arr.map((item) => <BrowseAll_child item={item} />);
+    return arr.map((item, idx) => <BrowseAll_child key={idx} item={item} />);
   };
 
   return (
     <div>
       <h2 className="text-white  font-bold mb-[20px] xl:text-3xl md:text-3xl sm:text-2xl">Browse all</h2>
-      <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
+      <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
         <BrowseAllChild />
       </div>
     </div>

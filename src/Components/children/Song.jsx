@@ -20,7 +20,7 @@ const Song = ({ item, idx }) => {
 	return (
 		<tr
 			onClick={clickSong}
-			className="max-sm:gap-3 flex gap-5 text-white font-bold items-center"
+			className="max-sm:gap-3 flex gap-5 text-white font-bold items-center hover:bg-[rgba(0,0,0,.3)] p-[10px] rounded-[8px]"
 		>
 			<td className="flex-0 max-sm:hiiden">{idx}</td>
 			<td className="flex-0">
@@ -39,11 +39,8 @@ const Song = ({ item, idx }) => {
 				<span className="max-sm:text-[12px] text-[#B3B3B3] truncate max-lg:w-40 max-lg:overflow-hidden">
 					{item.artists[0].name}
 				</span>
-				{/* <span className="text-[#B3B3B3] text-[14px] max-sm:text-[12px] truncate">
-					{item.artists[0].name}
-				</span> */}
 			</td>
-			<td className="flex-auto max-sm:hidden">{item.artists[0].name}</td>
+			{/* <td className="flex-auto max-sm:hidden">{item.artists[0].name}</td> */}
 			<td className="flex-auto"></td>
 			<td className="flex-0">
 				<AiOutlineHeart size="22px" />

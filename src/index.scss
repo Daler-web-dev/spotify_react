@@ -143,3 +143,31 @@ audio::-webkit-media-controls-volume-slider-container {
 .logo-img{
    height: 200px; 
 }
+.first-track {
+  transition: .5 ease;
+  cursor: pointer;
+}
+.play-btn {
+  transition: .5 ease;
+  position: absolute;
+  bottom: -100px;
+  right: 15px;
+  cursor: default;
+}
+.first-track:hover .play-btn {
+  bottom: 15px;
+}
+
+@media only screen and (max-width: 500px) {
+  .play-btn {
+    bottom: 15px;
+  }
+  .mob-inp {
+    background-color: rgba(0,0,0,.5);
+    backdrop-filter: blur(8px);
+    input {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}

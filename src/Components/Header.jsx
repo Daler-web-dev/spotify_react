@@ -1,3 +1,4 @@
+import {useContext, useState} from 'react'
 import { BsClockHistory } from "react-icons/bs";
 import { FiSearch, FiSettings } from "react-icons/fi";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -12,11 +13,14 @@ import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import searchContext from '../Contexts/searchcontext';
 
 const Header = ({ user }) => {
 	const navigate = useNavigate();
 
-	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const [anchorElUser, setAnchorElUser] = useState(null);
+	const {searchText, changeSearchText} = useContext(searchContext);
+	
 
 	const localStorageClear = () => {
 		localStorage.clear();
@@ -36,7 +40,7 @@ const Header = ({ user }) => {
 	const userImage = user?.images[0]?.url;
 
 	return (
-		<header className="max-lg:py-4 max-sm::py-3 text-white py-5 flex items-center justify-between md:pl-[18%] pl-[0%]">
+		<header className="max-lg:py-4 max-sm::py-3 text-white py-5 flex items-center justify-between md:pl-[18%] pl-[0%] max-sm:mb-[50px]">
 			<div className="flex items-center">
 				<button
 					onClick={() => navigate(-1)}
@@ -51,12 +55,14 @@ const Header = ({ user }) => {
 					<IoIosArrowForward size="32" />
 				</button>
 				{location.pathname === "/search" ? (
-					<div className="flex gap-2 w-full rounded-full items-center bg-white py-[12px] px-[18px] mx-[20px]">
+					<div className="mob-inp flex gap-2 w-full rounded-full items-center bg-white py-[12px] px-[18px] mx-[20px] max-sm:absolute top-20 left-2 max-sm:mx-0 max-sm:w-[95%] max-sm:rounded-sm" >
 						<FiSearch size="27" color="black" />
 						<input
 							className="xl:w-[270px] lg:w-[270px] md:w-[270px] sm:w-[270px] w-full h-[25px] outline-none text-[22px] text-black"
 							placeholder="Artists, songs, or podcasts"
 							type="text"
+							defaultValue={searchText}
+							onInput={(e) => changeSearchText(e.target.value)}
 						/>
 					</div>
 				) : null}
