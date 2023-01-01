@@ -55,13 +55,12 @@ const Home = () => {
 
 	useEffect(() => {
 		let time = new Date().getHours()
-		console.log(time);
 
 		if(time > 18) {
 			setGreeting("Good evening")
 		} else if(time > 12) {
 			setGreeting("Good afternoon")
-		} else if(time > 6) {
+		} else if(time >= 6) {
 			setGreeting("Good morning")
 		} else if(time >= 0) {
 			setGreeting("Good night")
@@ -75,8 +74,6 @@ const Home = () => {
 	if (error) {
 		return <span>error</span>;
 	}
-
-	
 
 	return (
 		<>

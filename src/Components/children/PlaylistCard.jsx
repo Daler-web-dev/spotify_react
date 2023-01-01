@@ -7,7 +7,7 @@ const PlaylistCard = ({name, description, images, tracks}) => {
    const navigate = useNavigate('/playlist/name')
    
    const showPlaylist = () => {
-      navigate('/playlist?id=' + name, {state: tracks?.href})
+      navigate('/playlist?id=' + name, {state: {track: tracks?.href, img}})
    }
 
    return (

@@ -49,8 +49,6 @@ function getAverageRGB(imgEl) {
 	rgb.g = ~~(rgb.g / count);
 	rgb.b = ~~(rgb.b / count);
 
-	console.log(rgb);
-
 	return rgb;
 }
 
@@ -61,7 +59,7 @@ const MyPlaylist = ({ id, images, name, tracks }) => {
 	const {setContextBg} = useContext(bgContext);
 
 	const showPlaylist = () => {
-		navigate("/playlist?id=" + name, { state: tracks.href });
+		navigate("/playlist?id=" + name, { state: {track: tracks.href, img: images[0]?.url} });
 	};
 
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import PlaylistOverview from "../Components/PlaylistOverview";
 import SongsList from "../Components/SongsList";
@@ -16,8 +16,9 @@ const LikedSongs = () => {
     const token = useContext(TOKEN)
     const {state} = useLocation()
 
+    
     useEffect(() => {
-        request(state, "GET", null, {
+        request(state.track, "GET", null, {
             "Accept": "application/json",
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
@@ -28,6 +29,15 @@ const LikedSongs = () => {
         })
 
     }, []);
+
+
+    const getArtistsNames = () => {
+        let names = tracks.map(item => item?.track?.artists[0]?.name)
+        names = [...new Set(names)]
+        let stringifyed = names.slice(0,4) + '...'
+
+        return stringifyed
+    }
 
     if(loading) {
         return <Loading/>
@@ -41,7 +51,7 @@ const LikedSongs = () => {
             <Helmet>
                 <title>Spotify - Playlist</title>
             </Helmet>
-            <PlaylistOverview album={album} />
+            <PlaylistOverview album={album} coverImage={state.img} artists={getArtistsNames} />
             <SongsList tracks={tracks} />
         </div>
     );
