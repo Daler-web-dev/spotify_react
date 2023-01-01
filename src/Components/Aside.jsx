@@ -56,7 +56,7 @@ const Aside = () => {
 									style={({ isActive }) => ({
 										color: isActive ? "#ffffff" : "inherit",
 									})}
-									to="collection-playlists"
+									to="/library"
 									className="max-lg:flex-col flex gap-1 items-center w-fit"
 								>
 									<div className="max-lg:w-[30px] w-[50px]">
