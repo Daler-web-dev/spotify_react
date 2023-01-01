@@ -9,7 +9,7 @@ const PlaylistOverview = ({album, coverImage, artists}) => {
    useEffect(() => {
       setContextBg(getAverageRGB(imgEl.current))
       console.log(getAverageRGB(imgEl.current), 'overview');
-   }, [imgEl]);
+   }, [imgEl.current]);
 
    return (
       <div className='max-md:mt-5 max-sm:mt-3 max-sm:flex-col max-sm:items-center max-sm:justify-center flex items-end mt-7'>
