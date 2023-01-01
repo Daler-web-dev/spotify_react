@@ -27,7 +27,6 @@ const LikedSongs = () => {
             setAlbum(res);
             setTracks(res.items)
         })
-
     }, []);
 
 

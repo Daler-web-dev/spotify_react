@@ -17,6 +17,8 @@ const Layout = () => {
 	});
 	const [user, setUser] = useState(null)
 	const [bgColor, setBgColor] = useState('')
+	const [anim, setAnim] = useState(false)
+	
 
 	const {request} = useHttp()
 
@@ -50,19 +52,26 @@ const Layout = () => {
 			Authorization: `Bearer ${token}`,
 		}).then(res => setUser(res))
 	}, []);
+
+	useEffect(() => {
+		setAnim(!anim)
+	}, [bgColor]);
 	
 	if (!token) {
 		return <Login />;
 	}
 
-	let rgb = `rgb(${bgColor.r}, ${bgColor.g}, ${bgColor.b})`
+	// let rgb = `rgb(${bgColor.r}, ${bgColor.g}, ${bgColor.b})`
 
 	return (
 		<>
 		<bgContext.Provider value={{bgColor, setContextBg}} >
 			<currentTrack.Provider value={{ track, changeTrack }}>
 				<div className='h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#37373720] to-[#121212]'
-					style={{background: `linear-gradient(${rgb}, #121212)`}}
+					style={{background: `linear-gradient(${bgColor}, #121212)`, opacity: anim ? "1" : "0" }}
+				></div>
+				<div className='h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#37373720] to-[#121212]'
+					style={{background: `linear-gradient(${bgColor}, #121212)`, opacity: anim ? "0" : "1"}}
 				></div>
 				<div className="flex-1 h-fit px-6 max-sm:px-3">
 					<Header user={user} />
