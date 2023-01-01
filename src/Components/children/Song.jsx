@@ -31,9 +31,12 @@ const Song = ({ item, idx }) => {
 			</td>
 			<td className="flex-auto flex flex-col">
 				<span className="max-sm:text-[14px] truncate max-lg:w-40 max-lg:overflow-hidden">{item.name}</span>
-				<span className="text-[#B3B3B3] text-[14px] max-sm:text-[12px] truncate">
+				<span className="max-sm:text-[12px] text-[#B3B3B3] truncate max-lg:w-40 max-lg:overflow-hidden">
 					{item.artists[0].name}
 				</span>
+				{/* <span className="text-[#B3B3B3] text-[14px] max-sm:text-[12px] truncate">
+					{item.artists[0].name}
+				</span> */}
 			</td>
 			<td className="flex-auto max-sm:hidden">{item.artists[0].name}</td>
 			<td className="flex-auto"></td>
