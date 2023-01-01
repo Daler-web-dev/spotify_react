@@ -27,7 +27,7 @@ export function getAverageRGB(imgEl) {
 	try {
 		data = context.getImageData(0, 0, width, height);
 	} catch (e) {
-		/* security error, img on diff domain */ console.log("trying get image");
+		/* security error, img on diff domain */ console.log("trying to get image");
 		return defaultRGB;
 	}
 
